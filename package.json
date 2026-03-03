@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "hexo generate",
+    "build": "npm run sync:room-renovator && hexo generate",
     "clean": "hexo clean",
     "deploy": "hexo deploy",
-    "server": "hexo server"
+    "server": "hexo server",
+    "sync:room-renovator": "npm --prefix room-renovator run build && mkdir -p source/room-renovator && rsync -a --delete room-renovator/dist/ source/room-renovator/"
   },
   "hexo": {
     "version": "8.1.1"
